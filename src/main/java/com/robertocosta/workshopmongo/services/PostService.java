@@ -1,5 +1,6 @@
 package com.robertocosta.workshopmongo.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +24,11 @@ public class PostService {
 	
 	public List<Post> findByTitle(String text){
 		return repo.findByTitleContainingIgnoreCase(text);
+	}
+	
+	public List<Post> fullSearch(String text, LocalDateTime minDate, LocalDateTime maxDate){
+		//maxDate = maxDate.plusSeconds(86400);//24*60*60
+		return repo.fullSearch(text, minDate, maxDate);
 	}
 
 }

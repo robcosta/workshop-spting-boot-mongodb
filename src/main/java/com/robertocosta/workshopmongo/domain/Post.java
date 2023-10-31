@@ -1,7 +1,7 @@
 package com.robertocosta.workshopmongo.domain;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +20,8 @@ public class Post implements Serializable{
 	@Id
 	private String id;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
-	private Instant date;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime date;
 	private String title;
 	private String body;
 	
@@ -32,7 +32,7 @@ public class Post implements Serializable{
 	public Post() {
 	}
 
-	public Post(String id, Instant date, String title, String body, AuthorDTO author) {
+	public Post(String id, LocalDateTime date, String title, String body, AuthorDTO author) {
 		super();
 		this.id = id;
 		this.date = date;
@@ -49,11 +49,11 @@ public class Post implements Serializable{
 		this.id = id;
 	}
 
-	public Instant getDate() {
+	public LocalDateTime getDate() {
 		return date;
 	}
 
-	public void setDate(Instant date) {
+	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
 

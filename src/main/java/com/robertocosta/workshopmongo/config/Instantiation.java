@@ -36,8 +36,8 @@ public class Instantiation implements CommandLineRunner{
 		
 		userRepository.saveAll(Arrays.asList(maria, alex, bob));
 		
-		Post p1 = new Post(null, Instant.parse("2018-06-20T19:53:07Z"),"Patiu viagem","Vou viajar para São Paulo. Abraços!", new AuthorDTO(maria));
-		Post p2 = new Post(null, Instant.parse("2018-06-25T19:53:07Z"),"Bom dia","Acordei feliz hoje", new AuthorDTO(maria));
+		Post p1 = new Post(null, LocalDateTime.parse("2018-03-20T21:00:00"),"Partiu viagem","Vou viajar para São Paulo. Abraços!", new AuthorDTO(maria));
+		Post p2 = new Post(null, LocalDateTime.parse("2018-03-21T21:53:07"),"Bom dia","Acordei feliz hoje", new AuthorDTO(maria));
 			
 		postRepository.saveAll(Arrays.asList(p1,p2));
 		
@@ -46,11 +46,15 @@ public class Instantiation implements CommandLineRunner{
 		userRepository.save(maria);
 		
 		CommentDTO c1 = new CommentDTO("Boa viagem mano!", LocalDateTime.parse("2018-03-21T08:20"), new AuthorDTO(alex));
-		CommentDTO c2 = new CommentDTO("Aproveite!", LocalDateTime.parse("2018-03-21T11:35"), new AuthorDTO(bob));
+		CommentDTO c2 = new CommentDTO("Aproveite!", LocalDateTime.parse("2018-03-22T11:35"), new AuthorDTO(bob));
+		CommentDTO c3 = new CommentDTO("Tenha um ótimo dia!", LocalDateTime.parse("2018-03-21T23:40"), new AuthorDTO(bob));
+		CommentDTO c4 = new CommentDTO("Deus o abençoe!", LocalDateTime.parse("2018-03-22T11:30"), new AuthorDTO(bob));
 		
 		p1.getComments().addAll(Arrays.asList(c1,c2));
+		p2.getComments().addAll(Arrays.asList(c3,c4));
 		
 		postRepository.save(p1);
+		postRepository.save(p2);
 	}
 
 }
